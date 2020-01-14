@@ -12,7 +12,7 @@ CREATE TABLE `Customer` (
 );
 
 CREATE TABLE `Transaction` (
-  `id` INT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `time` INT,
   `branch_id` INT,
   `customer_id` INT,
@@ -21,7 +21,7 @@ CREATE TABLE `Transaction` (
 );
 
 CREATE TABLE `FaceImage` (
-  `id` INT,
+  `id` INT NOT NULL AUTO_INCREMENT,
   `image_path` TEXT,
   `camera_id` INT,
   `branch_id` INT,
@@ -76,3 +76,4 @@ CREATE TABLE `Race` (
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
+
