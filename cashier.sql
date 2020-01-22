@@ -6,7 +6,7 @@ CREATE TABLE `Product` (
 );
 
 CREATE TABLE `Customer` (
-  `id` INT,
+  `id` VARCHAR(255),
   `name` TEXT,
   PRIMARY KEY (`id`)
 );
@@ -15,7 +15,7 @@ CREATE TABLE `Transaction` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `time` INT,
   `branch_id` INT,
-  `customer_id` INT,
+  `customer_id` VARCHAR(255),
   PRIMARY KEY (`id`),
   FOREIGN KEY (`customer_id`) REFERENCES `Customer` (`id`)
 );
