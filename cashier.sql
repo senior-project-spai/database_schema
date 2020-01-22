@@ -1,5 +1,5 @@
 CREATE TABLE `Product` (
-  `id` INT,
+  `id` VARCHAR(255),
   `name` TEXT,
   `price` INT,
   PRIMARY KEY (`id`)
@@ -44,7 +44,7 @@ CREATE TABLE `TransactionFaceImage` (
 -- Have some problem below
 CREATE TABLE `TransactionProduct` (
   `transaction_id` INT,
-  `product_id` INT,
+  `product_id` VARCHAR(255),
   `quantity` INT,
   PRIMARY KEY (`transaction_id`,`product_id`),
   FOREIGN KEY (`transaction_id`) REFERENCES `Transaction` (`id`),
