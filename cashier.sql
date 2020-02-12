@@ -77,3 +77,16 @@ CREATE TABLE `Race` (
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
 
+CREATE TABLE `Age` (
+  `face_image_id` INT,
+  `min_age` INT,
+  `max_age` INT,
+  `confidence` DOUBLE,
+  `position_top` INT,
+  `position_right` INT,
+  `position_bottom` INT,
+  `position_left` INT,
+  `time` INT,
+  PRIMARY KEY (`face_image_id`),
+  FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
+);
