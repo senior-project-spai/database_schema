@@ -25,7 +25,8 @@ CREATE TABLE `FaceImage` (
   `image_path` TEXT,
   `camera_id` INT,
   `branch_id` INT,
-  `time` INT,
+  `time` DECIMAL(17,6),
+  `image_time` DECIMAL(17,6),
   `position_top` INT,
   `position_right` INT,
   `position_bottom` INT,
@@ -59,7 +60,7 @@ CREATE TABLE `Gender` (
   `position_right` INT,
   `position_bottom` INT,
   `position_left` INT,
-  `time` INT,
+  `time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
@@ -72,7 +73,7 @@ CREATE TABLE `Race` (
   `position_right` INT,
   `position_bottom` INT,
   `position_left` INT,
-  `time` INT,
+  `time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
@@ -86,7 +87,7 @@ CREATE TABLE `Age` (
   `position_right` INT,
   `position_bottom` INT,
   `position_left` INT,
-  `time` INT,
+  `time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
