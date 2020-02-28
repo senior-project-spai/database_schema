@@ -61,6 +61,7 @@ CREATE TABLE `Gender` (
   `position_bottom` INT,
   `position_left` INT,
   `time` DECIMAL(17,6),
+  `added_time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
@@ -74,6 +75,7 @@ CREATE TABLE `Race` (
   `position_bottom` INT,
   `position_left` INT,
   `time` DECIMAL(17,6),
+  `added_time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
@@ -88,6 +90,7 @@ CREATE TABLE `Age` (
   `position_bottom` INT,
   `position_left` INT,
   `time` DECIMAL(17,6),
+  `added_time` DECIMAL(17,6),
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
