@@ -1,3 +1,7 @@
+CREATE SCHEMA `spai` ;
+
+USE `spai` ;
+
 CREATE TABLE `Product` (
   `id` VARCHAR(255),
   `name` TEXT,
