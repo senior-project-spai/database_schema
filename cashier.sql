@@ -1,6 +1,6 @@
-CREATE SCHEMA `spai` ;
+CREATE SCHEMA `cashier` ;
 
-USE `spai` ;
+USE `cashier` ;
 
 CREATE TABLE `Product` (
   `id` VARCHAR(255),
