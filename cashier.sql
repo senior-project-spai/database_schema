@@ -100,3 +100,91 @@ CREATE TABLE `Age` (
   PRIMARY KEY (`face_image_id`),
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
+
+/* Database for FADE integration */
+
+CREATE DATABASE IF NOT EXISTS `face_recognition` ;
+
+USE `face_recognition` ;
+
+CREATE TABLE `image` (
+  `id` varchar(32) NOT NULL,
+  `path` varchar(70) NOT NULL,
+  `gender_timestamp` bigint(20) DEFAULT NULL,
+  `age_timestamp` bigint(20) DEFAULT NULL,
+  `emotion_timestamp` bigint(20) DEFAULT NULL,
+  `face_recognition_timestamp` bigint(20) DEFAULT NULL,
+  `timestamp` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+);
+
+CREATE TABLE `age` (
+  `id` varchar(32) NOT NULL,
+  `image_id` varchar(32) DEFAULT NULL,
+  `0_to_10_confidence` float NOT NULL,
+  `11_to_20_confidence` float NOT NULL,
+  `21_to_30_confidence` float NOT NULL,
+  `31_to_40_confidence` float NOT NULL,
+  `41_to_50_confidence` float NOT NULL,
+  `51_to_60_confidence` float NOT NULL,
+  `61_to_70_confidence` float NOT NULL,
+  `71_to_100_confidence` float NOT NULL,
+  `position_top` int(10) unsigned DEFAULT NULL,
+  `position_right` int(10) unsigned DEFAULT NULL,
+  `position_bottom` int(10) unsigned DEFAULT NULL,
+  `position_left` int(10) unsigned DEFAULT NULL,
+  `timestamp` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_age_image` (`image_id`),
+  CONSTRAINT `FK_age_image` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`)
+);
+
+CREATE TABLE `emotion` (
+  `id` varchar(32) NOT NULL,
+  `image_id` varchar(32) DEFAULT NULL,
+  `uncertain_confidence` float NOT NULL,
+  `angry_confidence` float NOT NULL,
+  `disgusted_confidence` float NOT NULL,
+  `fearful_confidence` float NOT NULL,
+  `happy_confidence` float NOT NULL,
+  `neutral_confidence` float NOT NULL,
+  `sad_confidence` float NOT NULL,
+  `surprised_confidence` float NOT NULL,
+  `position_top` int(10) unsigned DEFAULT NULL,
+  `position_right` int(10) unsigned DEFAULT NULL,
+  `position_bottom` int(10) unsigned DEFAULT NULL,
+  `position_left` int(10) unsigned DEFAULT NULL,
+  `timestamp` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_emotion_image` (`image_id`),
+  CONSTRAINT `FK_emotion_image` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`)
+);
+
+CREATE TABLE `face_recognition` (
+  `id` varchar(32) NOT NULL,
+  `image_id` varchar(32) DEFAULT NULL,
+  `label` varchar(60) DEFAULT NULL,
+  `position_top` int(10) unsigned DEFAULT NULL,
+  `position_right` int(10) unsigned DEFAULT NULL,
+  `position_bottom` int(10) unsigned DEFAULT NULL,
+  `position_left` int(10) unsigned DEFAULT NULL,
+  `timestamp` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_face_recognition_image` (`image_id`),
+  CONSTRAINT `FK_face_recognition_image` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`)
+);
+
+CREATE TABLE `gender` (
+  `id` varchar(32) NOT NULL,
+  `image_id` varchar(32) DEFAULT NULL,
+  `male_confidence` float NOT NULL,
+  `female_confidence` float NOT NULL,
+  `position_top` int(10) unsigned DEFAULT NULL,
+  `position_right` int(10) unsigned DEFAULT NULL,
+  `position_bottom` int(10) unsigned DEFAULT NULL,
+  `position_left` int(10) unsigned DEFAULT NULL,
+  `timestamp` bigint(20) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FK_gender_image` (`image_id`),
+  CONSTRAINT `FK_gender_image` FOREIGN KEY (`image_id`) REFERENCES `image` (`id`)
+);
