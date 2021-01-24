@@ -101,6 +101,19 @@ CREATE TABLE `Age` (
   FOREIGN KEY (`face_image_id`) REFERENCES `FaceImage` (`id`)
 );
 
+/* table for object detection */
+CREATE TABLE `object` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` text NOT NULL,
+  `probability` decimal(21,20) NOT NULL,
+  `image_path` text NOT NULL,
+  `position_top` int(10) unsigned NOT NULL,
+  `position_right` int(10) unsigned NOT NULL,
+  `position_bottom` int(10) unsigned NOT NULL,
+  `position_left` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`)
+);
+
 /* Database for FADE integration */
 
 CREATE DATABASE IF NOT EXISTS `face_recognition` ;
